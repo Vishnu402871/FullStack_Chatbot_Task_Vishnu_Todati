@@ -1,75 +1,52 @@
-# React + TypeScript + Vite
+# FullStack Chatbot Task Vishnu Todati
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Description
+A Full Stack AI Support & Lead Assistant web application built using React, TypeScript, Node.js, Express and SQLite.
 
-Currently, two official plugins are available:
+## Technologies Used
+- React.js
+- TypeScript
+- Node.js
+- Express.js
+- SQLite
+- Bootstrap
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
+- Customer enquiry form
+- Rule-based chatbot
+- Admin dashboard
+- Search functionality
+- Status filtering
+- CRUD operations
+- Database integration
 
-## React Compiler
+## Frontend Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+cd frontend
+npm install
+npm run dev
 
-## Expanding the ESLint configuration
+## Backend Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+cd backend
+npm install
+node server.js
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Database
+SQLite database used for enquiry storage.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## API Endpoints
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+GET /api/enquiries
 
-```
+POST /api/enquiries
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+PUT /api/enquiries/:id
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+DELETE /api/enquiries/:id
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Screenshots
+(Add screenshots here)
 
-```
+## Author
+Todati Vishnu Vardhan

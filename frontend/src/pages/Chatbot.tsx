@@ -9,55 +9,57 @@ function Chatbot() {
 
     if (text.includes("course")) {
       setReply(
-        "We offer Drone Training, Full Stack Development, AI & Machine Learning courses."
+        "We offer Drone Training, Full Stack Development and AI & Machine Learning courses."
       );
     } else if (text.includes("fee")) {
       setReply(
-        "Course fees vary by program. Please submit an enquiry for details."
-      );
-    } else if (text.includes("contact")) {
-      setReply(
-        "You can contact us through the enquiry form or admin support team."
+        "Course fees vary depending on the program."
       );
     } else if (text.includes("service")) {
       setReply(
-        "We provide drone services, training, technology solutions and consulting."
+        "We provide training, consulting and technology services."
+      );
+    } else if (text.includes("contact")) {
+      setReply(
+        "Please use the Contact page to submit your enquiry."
       );
     } else if (text.includes("hello")) {
-      setReply("Hello! How can I help you today?");
+      setReply(
+        "Hello! How can I assist you today?"
+      );
     } else {
       setReply(
-        "Sorry, I do not understand. Please ask about courses, fees, services or contact information."
+        "Sorry, I only understand questions about courses, fees, services and contact information."
       );
     }
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>AI Support Assistant</h1>
+    <div className="container mt-5">
+      <div className="card shadow p-4">
+        <h2 className="mb-4">
+          AI Support Assistant
+        </h2>
 
-      <input
-        type="text"
-        placeholder="Ask something..."
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        style={{
-          width: "300px",
-          padding: "8px",
-        }}
-      />
+        <input
+          className="form-control"
+          placeholder="Ask a question..."
+          value={message}
+          onChange={(e) =>
+            setMessage(e.target.value)
+          }
+        />
 
-      <button
-        onClick={handleSend}
-        style={{
-          marginLeft: "10px",
-        }}
-      >
-        Send
-      </button>
+        <button
+          className="btn btn-success mt-3"
+          onClick={handleSend}
+        >
+          Send
+        </button>
 
-      <div style={{ marginTop: "20px" }}>
-        <strong>Bot:</strong> {reply}
+        <div className="alert alert-info mt-4">
+          <strong>Bot:</strong> {reply}
+        </div>
       </div>
     </div>
   );

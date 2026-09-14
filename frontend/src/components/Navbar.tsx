@@ -2,20 +2,38 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav
-      style={{
-        display: "flex",
-        gap: "20px",
-        padding: "15px",
-        background: "#1f2937",
-      }}
-    >
-      <Link to="/" style={{ color: "white" }}>Home</Link>
-      <Link to="/services" style={{ color: "white" }}>Services</Link>
-      <Link to="/courses" style={{ color: "white" }}>Courses</Link>
-      <Link to="/chatbot" style={{ color: "white" }}>Chatbot</Link>
-      <Link to="/contact" style={{ color: "white" }}>Contact</Link>
-      <Link to="/admin" style={{ color: "white" }}>Admin</Link>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div className="container">
+        <Link className="navbar-brand fw-bold" to="/">
+          AI Support Assistant
+        </Link>
+
+        <div className="navbar-nav ms-auto">
+          <Link className="nav-link" to="/">
+            Home
+          </Link>
+
+          <Link className="nav-link" to="/services">
+            Services
+          </Link>
+
+          <Link className="nav-link" to="/courses">
+            Courses
+          </Link>
+
+          <Link className="nav-link" to="/chatbot">
+            Chatbot
+          </Link>
+
+          <Link className="nav-link" to="/contact">
+            Contact
+          </Link>
+
+          <Link className="nav-link" to="/admin">
+            Admin
+          </Link>
+        </div>
+      </div>
     </nav>
   );
 }

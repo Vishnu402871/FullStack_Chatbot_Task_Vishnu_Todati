@@ -2,90 +2,105 @@ import { useState } from "react";
 import axios from "axios";
 
 function Contact() {
-  const [form, setForm] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
   });
 
-  const [success, setSuccess] = useState("");
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    if (!form.name || !form.email || !form.phone || !form.message) {
-      alert("All fields are required");
-      return;
-    }
-
     try {
-      await axios.post("http://localhost:5000/api/enquiries", form);
+      await axios.post(
+        "http://localhost:5000/api/enquiries",
+        formData
+      );
 
-      setSuccess("Enquiry submitted successfully!");
+      alert("Enquiry submitted successfully!");
 
-      setForm({
+      setFormData({
         name: "",
         email: "",
         phone: "",
         message: "",
       });
     } catch (error) {
-      console.error(error);
-      alert("Submission failed");
+      alert("Error submitting enquiry");
     }
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Student / Customer Enquiry</h1>
+    <div className="container mt-5">
+      <div className="card shadow p-4">
+        <h2 className="text-center mb-4">
+          Contact Us
+        </h2>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={form.name}
-          onChange={handleChange}
-        />
-        <br /><br />
+        <form onSubmit={handleSubmit}>
+          <input
+            className="form-control mb-3"
+            placeholder="Name"
+            value={formData.name}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                name: e.target.value,
+              })
+            }
+            required
+          />
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-        />
-        <br /><br />
+          <input
+            className="form-control mb-3"
+            placeholder="Email"
+            type="email"
+            value={formData.email}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                email: e.target.value,
+              })
+            }
+            required
+          />
 
-        <input
-          type="text"
-          name="phone"
-          placeholder="Phone"
-          value={form.phone}
-          onChange={handleChange}
-        />
-        <br /><br />
+          <input
+            className="form-control mb-3"
+            placeholder="Phone"
+            value={formData.phone}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                phone: e.target.value,
+              })
+            }
+            required
+          />
 
-        <textarea
-          name="message"
-          placeholder="Your enquiry"
-          value={form.message}
-          onChange={handleChange}
-        />
-        <br /><br />
+          <textarea
+            className="form-control mb-3"
+            rows={4}
+            placeholder="Message"
+            value={formData.message}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                message: e.target.value,
+              })
+            }
+            required
+          />
 
-        <button type="submit">Submit</button>
-      </form>
-
-      {success && <p>{success}</p>}
+          <button
+            className="btn btn-primary w-100"
+            type="submit"
+          >
+            Submit Enquiry
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
